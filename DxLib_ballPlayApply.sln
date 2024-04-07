@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DxLibBASE", "DxLibBASE.vcxproj", "{20A4F7A9-1164-4B03-903D-9C2FFEA273E7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DxLib_ballPlayApply", "DxLibBASE.vcxproj", "{20A4F7A9-1164-4B03-903D-9C2FFEA273E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

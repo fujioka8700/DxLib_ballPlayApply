@@ -1,5 +1,5 @@
 //************************************************
-// DXライブラリ マウスで玉遊び(基本)
+// DXライブラリ マウスで玉遊び(応用)
 // 作成日：2024/04/04
 // 作成者：fujioka8700
 // Copyright (c) fujioka8700 All rights reserved.
@@ -30,6 +30,8 @@ BALL     Ball;
 LONGLONG fpsTimer, deltaTimer;
 bool     MouseLeftPress, MouseLeftRelease;
 CRD      MousePressPos, MouseReleasePos;
+
+CRD      LineStart = { 640, 120 }, LineEnd = { 320, 480 };
 
 //================================================
 // FPSの計測と描画
@@ -183,6 +185,16 @@ void Update(void)
 	}
 
 	CheckDoubleClick();
+
+	float a, b, c, D;
+	a = LineEnd.Y - LineStart.Y;
+	b = LineStart.X - LineEnd.X;
+	c = LineEnd.X * LineStart.Y - LineStart.X * LineEnd.Y;
+	D = fabsf(a * Ball.POS.X + b * Ball.POS.Y + c) / sqrtf(powf(a, 2)+ powf(b, 2));
+	if (D <= Ball.RADIUS)
+	{
+		Ball.SPEED.X = Ball.SPEED.Y = 0;
+	}
 }
 
 //================================================
@@ -191,8 +203,10 @@ void Update(void)
 void Draw(void)
 {
 	ClearDrawScreen();
-	DrawCircleAA(Ball.POS.X, Ball.POS.Y, Ball.RADIUS, 32,
-		GetColor(255, 255, 0), TRUE);
+	DrawCircleAA(Ball.POS.X, Ball.POS.Y, Ball.RADIUS, 32,GetColor(255, 255, 0), TRUE);
+
+	DrawLineAA(LineStart.X, LineStart.Y, LineEnd.X, LineEnd.Y, GetColor(255, 255, 255));
+
 	FpsDraw(&fpsTimer);
 }
 
